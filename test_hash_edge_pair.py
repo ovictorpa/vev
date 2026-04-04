@@ -4,7 +4,7 @@ import os
 
 sys.path.insert(0, os.getcwd())
 
-from VEV.vev.tabelaHash import TabelaHashSondagemLinear
+from tabelaHash import TabelaHashSondagemLinear
 
 class TestHashMCDC(unittest.TestCase):
 
@@ -40,6 +40,36 @@ class TestHashMCDC(unittest.TestCase):
     def test_contem_false(self):
         tabela = TabelaHashSondagemLinear(5)
         self.assertFalse(tabela.contem("x"))
+        
+    def test_edge_pair_sondagem_sucesso(self):
+        self.th = TabelaHashSondagemLinear(capacidade=3)
+        self.th.inserir(0, "A")
+        self.th.inserir(3, "B")
+
+        self.assertEqual(self.th.buscar(3), "B") [cite: 34]
+
+    def test_edge_pair_circularidade(self):
+        self.th = TabelaHashSondagemLinear(capacidade=3)
+        self.th.inserir(2, "Fim")
+        
+        self.th.inserir(5, "Volta") 
+        self.assertTrue(self.th.contem(5)) [cite: 34]
+
+    def test_edge_pair_remocao_para_none(self):
+        self.th = TabelaHashSondagemLinear(capacidade=3)
+        self.th.inserir(0, "A")
+        self.th.remover(0) 
+        with self.assertRaises(KeyError):
+            self.th.buscar(3) 
+
+    def test_edge_pair_tabela_cheia_saida(self):
+        self.th = TabelaHashSondagemLinear(capacidade=3)
+        self.th.inserir(0, "V0")
+        self.th.inserir(1, "V1")
+        self.th.inserir(2, "V2")
+        
+        with self.assertRaises(KeyError):
+            self.th.buscar(10)
 
 if __name__ == "__main__":
     unittest.main()

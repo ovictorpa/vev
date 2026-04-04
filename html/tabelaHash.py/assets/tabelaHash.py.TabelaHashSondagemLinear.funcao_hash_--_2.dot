@@ -22,7 +22,7 @@ isinstance(chave, int)"]
 ",color=green,label="7 THEN
 Assign (+0)"]
 9 [tooltip="soma = 0
-",color=red,label="9 JOIN
+",color=green,label="9 JOIN
 Assign (+0)"]
 10  [tooltip="isinstance(chave, str)",color=green,label="10 COND
 isinstance(chave, str)"]
@@ -40,15 +40,15 @@ AugAssign (+0)"]
 Return (+0)"]
 16 [tooltip="for caractere in str(chave):
     soma += ord(caractere)
-",color=red,label="16 FOR_PRE
+",color=green,label="16 FOR_PRE
 For (+0)"]
-17 [tooltip="",color=red,label="17 FOR_ITER
+17 [tooltip="",color=green,label="17 FOR_ITER
 For (+0)"]
 18 [tooltip="soma += ord(caractere)
-",color=red,label="18 FOR_BODY
+",color=green,label="18 FOR_BODY
 AugAssign (+0)"]
 19 [tooltip="return soma % self.capacidade
-",color=red,style=filled, fillcolor="#E0E0E0", label="19 FOR_AFTER
+",color=green,style=filled, fillcolor="#E0E0E0", label="19 FOR_AFTER
 Return (+0)"]
 0 -> 1 [label="",color=green]
 5 -> 2 [label="T",color=green]
@@ -61,12 +61,12 @@ Return (+0)"]
 13 -> 12 [label="next",color=green]
 12 -> 14 [label="Not_Next",color=red]
 13 -> 14 [label="No_Next",color=green]
-9 -> 16 [label="",color=red]
-16 -> 17 [label="for:iter",color=red]
-17 -> 18 [label="Next",color=red]
-18 -> 17 [label="next",color=red]
+9 -> 16 [label="",color=green]
+16 -> 17 [label="for:iter",color=green]
+17 -> 18 [label="Next",color=green]
+18 -> 17 [label="next",color=green]
 17 -> 19 [label="Not_Next",color=red]
-18 -> 19 [label="No_Next",color=red]
+18 -> 19 [label="No_Next",color=green]
 5 -> 4 [label="",color=green]
-10 -> 9 [label="",color=red]
+10 -> 9 [label="",color=green]
 }

@@ -34,7 +34,7 @@ entrada is not None"]
 5 -> 2 [label="next",color=green]
 5 -> 4 [label="No_Next",color=green]
 8 -> 2 [label="next",color=green]
-8 -> 4 [label="No_Next",color=red]
+8 -> 4 [label="No_Next",color=green]
 9 -> 2 [label="next",color=green]
 9 -> 4 [label="No_Next",color=green]
 }

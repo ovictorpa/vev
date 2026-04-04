@@ -117,7 +117,7 @@ Return (+0)"]
 35  [tooltip="chave_guardada == chave",color=green,label="35 COND
 chave_guardada == chave"]
 37 [tooltip="return primeira_removida
-",color=red,style=filled, fillcolor="#E0E0E0", label="37 THEN
+",color=green,style=filled, fillcolor="#E0E0E0", label="37 THEN
 Return (+0)"]
 39 [tooltip="return None
 ",color=green,style=filled, fillcolor="#E0E0E0", label="39 JOIN
@@ -148,7 +148,7 @@ para_insercao"]
 35 -> 32 [label="T",color=green]
 31 -> 35 [label="cond",color=green]
 9 -> 1 [label="back",color=green]
-40 -> 37 [label="T",color=red]
+40 -> 37 [label="T",color=green]
 41 -> 40 [label="T",color=green]
 4 -> 41 [label="cond",color=green]
 5 -> 4 [label="while:done",color=green]
@@ -158,5 +158,5 @@ para_insercao"]
 30 -> 9 [label="",color=green]
 35 -> 9 [label="",color=green]
 40 -> 39 [label="",color=green]
-41 -> 39 [label="",color=red]
+41 -> 39 [label="",color=green]
 }

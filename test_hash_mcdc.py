@@ -4,7 +4,7 @@ import os
 
 sys.path.insert(0, os.getcwd())
 
-from VEV.vev.tabelaHash import TabelaHashSondagemLinear
+from tabelaHash import TabelaHashSondagemLinear
 
 class TestHashEdgePair(unittest.TestCase):
 
@@ -43,6 +43,39 @@ class TestHashEdgePair(unittest.TestCase):
         tabela.inserir("a", 1)
         tabela.inserir("b", 2)
         self.assertEqual(len(tabela.itens()), 2)
+        
+    
+    def test_mcdc_funcao_hash_isinstance(self):
+        self.th = TabelaHashSondagemLinear(capacidade=5)
+        self.assertEqual(self.th.funcao_hash(10), 0) [cite: 46]
+        self.assertEqual(self.th.funcao_hash("10"), sum(ord(c) for c in "10") % 5) [cite: 46]
+        self.assertEqual(self.th.funcao_hash(10.5), sum(ord(c) for c in "10.5") % 5) [cite: 46]
+
+    def test_mcdc_procurar_posicao_logic(self):
+        self.th = TabelaHashSondagemLinear(capacidade=5)
+        self.th.inserir(0, "A")
+        self.th.remover(0) 
+        pos = self.th._procurar_posicao(5, para_insercao=True) 
+        self.assertEqual(pos, 0) [cite: 13]
+
+        pos_busca = self.th._procurar_posicao(0, para_insercao=False)
+        self.assertIsNone(pos_busca) [cite: 13]
+
+    def test_mcdc_inserir_condicao_composta(self):
+        self.th = TabelaHashSondagemLinear(capacidade=5)
+        self.th.inserir("nova", 1) [cite: 13, 54]
+        
+        self.th.remover("nova")
+        self.th.inserir("reutilizada", 2)
+
+        self.th.inserir("reutilizada", 3)
+        self.assertEqual(self.th.buscar("reutilizada"), 3) [cite: 13, 54]
+
+    def test_mcdc_metodos_listagem(self):
+        self.th = TabelaHashSondagemLinear(capacidade=5)
+        self.th.inserir("A", 1)
+        self.th.remover("A")
+        self.assertEqual(len(self.th.chaves()), 0) [cite: 34, 54]
 
 if __name__ == "__main__":
     unittest.main()

@@ -467,7 +467,7 @@
 <g id="node26" class="node">
 <title>37</title>
 <g id="a_node26"><a xlink:title="return primeira_removida&#10;">
-<ellipse fill="#e0e0e0" stroke="red" cx="664.92" cy="-676.39" rx="56.92" ry="28.99"/>
+<ellipse fill="#e0e0e0" stroke="green" cx="664.92" cy="-676.39" rx="56.92" ry="28.99"/>
 <text xml:space="preserve" text-anchor="middle" x="664.92" y="-679.59" font-family="Times New Roman,serif" font-size="14.00">37 THEN</text>
 <text xml:space="preserve" text-anchor="middle" x="664.92" y="-663.09" font-family="Times New Roman,serif" font-size="14.00">Return (+0)</text>
 </a>
@@ -496,8 +496,8 @@
 <!-- 40&#45;&gt;37 -->
 <g id="edge23" class="edge">
 <title>40&#45;&gt;37</title>
-<path fill="none" stroke="red" d="M664.92,-757.65C664.92,-745.32 664.92,-730.63 664.92,-717.22"/>
-<polygon fill="red" stroke="red" points="668.42,-717.36 664.92,-707.36 661.42,-717.36 668.42,-717.36"/>
+<path fill="none" stroke="green" d="M664.92,-757.65C664.92,-745.32 664.92,-730.63 664.92,-717.22"/>
+<polygon fill="green" stroke="green" points="668.42,-717.36 664.92,-707.36 661.42,-717.36 668.42,-717.36"/>
 <text xml:space="preserve" text-anchor="middle" x="669.05" y="-726.58" font-family="Times New Roman,serif" font-size="14.00">T</text>
 </g>
 <!-- 40&#45;&gt;39 -->
@@ -509,8 +509,8 @@
 <!-- 41&#45;&gt;39 -->
 <g id="edge33" class="edge">
 <title>41&#45;&gt;39</title>
-<path fill="none" stroke="red" d="M577.58,-874.19C557.19,-860.34 534.24,-840.45 522.92,-815.86 508.52,-784.58 512.71,-745.03 519.21,-716.22"/>
-<polygon fill="red" stroke="red" points="522.53,-717.37 521.52,-706.82 515.73,-715.7 522.53,-717.37"/>
+<path fill="none" stroke="green" d="M577.58,-874.19C557.19,-860.34 534.24,-840.45 522.92,-815.86 508.52,-784.58 512.71,-745.03 519.21,-716.22"/>
+<polygon fill="green" stroke="green" points="522.53,-717.37 521.52,-706.82 515.73,-715.7 522.53,-717.37"/>
 </g>
 <!-- 41&#45;&gt;40 -->
 <g id="edge24" class="edge">

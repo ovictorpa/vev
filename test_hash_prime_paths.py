@@ -4,7 +4,7 @@ import os
 
 sys.path.insert(0, os.getcwd())
 
-from VEV.vev.tabelaHash import TabelaHashSondagemLinear
+from tabelaHash import TabelaHashSondagemLinear
 
 class TestHashPrimePaths(unittest.TestCase):
 
@@ -36,20 +36,32 @@ class TestHashPrimePaths(unittest.TestCase):
         tabela.inserir(4, "b")
         tabela.inserir(7, "c")
         self.assertEqual(tabela.buscar(7), "c")
-
-    def test_tabela_cheia(self):
-        tabela = TabelaHashSondagemLinear(3)
-        tabela.inserir(1, "a")
-        tabela.inserir(2, "b")
-        tabela.inserir(3, "c")
-        with self.assertRaises(OverflowError):
-            tabela.inserir(4, "d")
+            
+    def test_percorrer_tabela_toda_cheia(self):
+        self.th = TabelaHashSondagemLinear(capacidade=3)
+        self.th.inserir(0, "V0")
+        self.th.inserir(1, "V1")
+        self.th.inserir(2, "V2")
+        
+        pos = self.th._procurar_posicao(10, para_insercao=False)
+        self.assertIsNone(pos)
 
     def test_atualizacao_valor_existente(self):
         tabela = TabelaHashSondagemLinear(5)
         tabela.inserir("ana", 1)
         tabela.inserir("ana", 2)
         self.assertEqual(tabela.buscar("ana"), 2)
+        
+    def test_percorrer_tabela_toda_com_removido(self):
+        
+        self.th = TabelaHashSondagemLinear(capacidade=3)
 
+        self.th.inserir(0, "V0")
+        self.th.inserir(1, "V1")
+        self.th.inserir(2, "V2")
+        self.th.remover(0)
+        pos = self.th._procurar_posicao(10, para_insercao=True)
+        self.assertEqual(pos, 0)
+        
 if __name__ == "__main__":
     unittest.main()

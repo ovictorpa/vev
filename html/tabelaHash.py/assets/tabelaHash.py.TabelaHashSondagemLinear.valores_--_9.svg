@@ -78,8 +78,8 @@
 <!-- 2&#45;&gt;4 -->
 <g id="edge7" class="edge">
 <title>2&#45;&gt;4</title>
-<path fill="none" stroke="red" d="M108.68,-568.02C60.88,-553.8 0,-525.23 0,-471.92 0,-471.92 0,-471.92 0,-138.47 0,-105.74 24.92,-78.65 49.89,-59.73"/>
-<polygon fill="red" stroke="red" points="51.74,-62.7 57.81,-54.02 47.65,-57.03 51.74,-62.7"/>
+<path fill="none" stroke="green" d="M108.68,-568.02C60.88,-553.8 0,-525.23 0,-471.92 0,-471.92 0,-471.92 0,-138.47 0,-105.74 24.92,-78.65 49.89,-59.73"/>
+<polygon fill="green" stroke="green" points="51.74,-62.7 57.81,-54.02 47.65,-57.03 51.74,-62.7"/>
 <text xml:space="preserve" text-anchor="middle" x="26.62" y="-300.15" font-family="Times New Roman,serif" font-size="14.00">Not_Next</text>
 </g>
 <!-- 9 -->
@@ -164,8 +164,8 @@
 <!-- 9&#45;&gt;4 -->
 <g id="edge13" class="edge">
 <title>9&#45;&gt;4</title>
-<path fill="none" stroke="red" d="M102.64,-331.37C96.61,-316.17 90.03,-296.89 87,-278.95 74.62,-205.66 84.7,-118.67 92.68,-69.34"/>
-<polygon fill="red" stroke="red" points="96.09,-70.16 94.29,-59.72 89.18,-69 96.09,-70.16"/>
+<path fill="none" stroke="green" d="M102.64,-331.37C96.61,-316.17 90.03,-296.89 87,-278.95 74.62,-205.66 84.7,-118.67 92.68,-69.34"/>
+<polygon fill="green" stroke="green" points="96.09,-70.16 94.29,-59.72 89.18,-69 96.09,-70.16"/>
 <text xml:space="preserve" text-anchor="middle" x="106.11" y="-189.67" font-family="Times New Roman,serif" font-size="14.00">No_Next</text>
 </g>
 <!-- 9&#45;&gt;8 -->

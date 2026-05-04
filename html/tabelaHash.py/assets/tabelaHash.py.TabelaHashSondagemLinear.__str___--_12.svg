@@ -78,8 +78,8 @@
 <!-- 2&#45;&gt;4 -->
 <g id="edge10" class="edge">
 <title>2&#45;&gt;4</title>
-<path fill="none" stroke="red" d="M136.98,-683.33C78.8,-672.31 0,-645.71 0,-582.41 0,-582.41 0,-582.41 0,-138.47 0,-98.3 36.66,-70.66 72.05,-53.34"/>
-<polygon fill="red" stroke="red" points="73.49,-56.53 81.09,-49.14 70.54,-50.18 73.49,-56.53"/>
+<path fill="none" stroke="green" d="M136.98,-683.33C78.8,-672.31 0,-645.71 0,-582.41 0,-582.41 0,-582.41 0,-138.47 0,-98.3 36.66,-70.66 72.05,-53.34"/>
+<polygon fill="green" stroke="green" points="73.49,-56.53 81.09,-49.14 70.54,-50.18 73.49,-56.53"/>
 <text xml:space="preserve" text-anchor="middle" x="26.62" y="-355.39" font-family="Times New Roman,serif" font-size="14.00">Not_Next</text>
 </g>
 <!-- 8 -->

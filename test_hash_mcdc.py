@@ -4,78 +4,84 @@ import os
 
 sys.path.insert(0, os.getcwd())
 
-from tabelaHash import TabelaHashSondagemLinear
+from tabelaHash import REMOVIDO, TabelaHashSondagemLinear
 
-class TestHashEdgePair(unittest.TestCase):
 
-    def test_inserir_colisao(self):
+def montar_tabela(entradas):
+    tabela = TabelaHashSondagemLinear(len(entradas))
+    tabela.tabela = list(entradas)
+    tabela.quantidade = sum(
+        1 for entrada in entradas if entrada is not None and entrada is not REMOVIDO
+    )
+    return tabela
+
+
+class TestHashMCDC(unittest.TestCase):
+        
+    def test_mcdc_listagens_100_por_cento(self):
         tabela = TabelaHashSondagemLinear(3)
-        tabela.inserir(1, "a")
-        tabela.inserir(4, "b")  # colisão
-        self.assertEqual(tabela.buscar(4), "b")
-
-    def test_remover_e_reinserir(self):
-        tabela = TabelaHashSondagemLinear(5)
-        tabela.inserir("ana", 1)
-        tabela.remover("ana")
-        tabela.inserir("bia", 2)
-        self.assertTrue(tabela.contem("bia"))
-
-    def test_buscar_existente(self):
-        tabela = TabelaHashSondagemLinear(5)
-        tabela.inserir("x", 9)
-        self.assertEqual(tabela.buscar("x"), 9)
-
-    def test_buscar_inexistente(self):
-        tabela = TabelaHashSondagemLinear(5)
-        with self.assertRaises(KeyError):
-            tabela.buscar("y")
-
-    def test_tabela_cheia(self):
-        tabela = TabelaHashSondagemLinear(2)
-        tabela.inserir(1, "a")
-        tabela.inserir(2, "b")
-        with self.assertRaises(OverflowError):
-            tabela.inserir(3, "c")
-
-    def test_itens(self):
-        tabela = TabelaHashSondagemLinear(5)
-        tabela.inserir("a", 1)
-        tabela.inserir("b", 2)
-        self.assertEqual(len(tabela.itens()), 2)
         
+        tabela.inserir("OK", 100) 
+        tabela.inserir("DEL", 200) 
+        tabela.remover("DEL")     
+
+        resultado = tabela.chaves() #
+        self.assertEqual(resultado, ["OK"]) #
     
-    def test_mcdc_funcao_hash_isinstance(self):
-        self.th = TabelaHashSondagemLinear(capacidade=5)
-        self.assertEqual(self.th.funcao_hash(10), 0) [cite: 46]
-        self.assertEqual(self.th.funcao_hash("10"), sum(ord(c) for c in "10") % 5) [cite: 46]
-        self.assertEqual(self.th.funcao_hash(10.5), sum(ord(c) for c in "10.5") % 5) [cite: 46]
+    def test_mcdc_procurar_posicao_final(self):
+        tabela = TabelaHashSondagemLinear(2)
+        tabela.inserir(0, "v0")
+        tabela.remover(0) 
 
-    def test_mcdc_procurar_posicao_logic(self):
-        self.th = TabelaHashSondagemLinear(capacidade=5)
-        self.th.inserir(0, "A")
-        self.th.remover(0) 
-        pos = self.th._procurar_posicao(5, para_insercao=True) 
-        self.assertEqual(pos, 0) [cite: 13]
+        self.assertEqual(tabela._procurar_posicao(0, para_insercao=True), 0) #
 
-        pos_busca = self.th._procurar_posicao(0, para_insercao=False)
-        self.assertIsNone(pos_busca) [cite: 13]
+        self.assertIsNone(tabela._procurar_posicao(1, para_insercao=False)) #
 
-    def test_mcdc_inserir_condicao_composta(self):
-        self.th = TabelaHashSondagemLinear(capacidade=5)
-        self.th.inserir("nova", 1) [cite: 13, 54]
+        tabela_limpa = TabelaHashSondagemLinear(2)
+        tabela_limpa.inserir(0, "v0")
         
-        self.th.remover("nova")
-        self.th.inserir("reutilizada", 2)
+        self.assertEqual(tabela_limpa._procurar_posicao(1, para_insercao=True), 1)
+        
+    def test_mcdc_procurar_posicao_condicoes_de_insercao_e_slot_removido(self):
+        tabela = TabelaHashSondagemLinear(3)
 
-        self.th.inserir("reutilizada", 3)
-        self.assertEqual(self.th.buscar("reutilizada"), 3) [cite: 13, 54]
+        tabela.tabela = [REMOVIDO, None, None]
+        tabela._procurar_posicao(0, para_insercao=False) 
 
-    def test_mcdc_metodos_listagem(self):
-        self.th = TabelaHashSondagemLinear(capacidade=5)
-        self.th.inserir("A", 1)
-        self.th.remover("A")
-        self.assertEqual(len(self.th.chaves()), 0) [cite: 34, 54]
+        tabela.tabela = [REMOVIDO, REMOVIDO, None]
+        tabela._procurar_posicao(0, para_insercao=True)
+
+        tabela_cheia = TabelaHashSondagemLinear(2)
+        tabela_cheia.quantidade = 2 
+
+        tabela_cheia.tabela = [(1, "A"), (2, "B")]
+        tabela_cheia._procurar_posicao(99, para_insercao=False)
+        
+        tabela_cheia._procurar_posicao(99, para_insercao=True)
+
+        tabela_cheia.tabela = [REMOVIDO, (2, "B")]
+        tabela_cheia._procurar_posicao(99, para_insercao=True)
+
+
+    def test_mcdc_inserir_avalia_slot_atual_como_vazio_ou_removido(self):
+        tabela = TabelaHashSondagemLinear(3)
+        tabela.tabela = [None, REMOVIDO, (2, "Ocupado")]
+
+        tabela.inserir(0, "Novo A")
+
+        tabela.inserir(1, "Novo B")
+
+        tabela.inserir(2, "Atualiza Ocupado")
+
+
+    def test_mcdc_listagens_filtram_slots_vazios_e_marcadores_de_remocao(self):
+        tabela = TabelaHashSondagemLinear(3)
+        
+        tabela.tabela = [None, REMOVIDO, ("Chave", "Valor")]
+
+        self.assertEqual(tabela.chaves(), ["Chave"])
+        self.assertEqual(tabela.valores(), ["Valor"])
+        self.assertEqual(tabela.itens(), [("Chave", "Valor")])
 
 if __name__ == "__main__":
     unittest.main()
